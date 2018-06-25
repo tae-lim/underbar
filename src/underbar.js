@@ -108,6 +108,37 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+    //isSorted will run a much faster algorithm
+    // var uniqueItem = array[0];
+    // var uniqueList = [array[0]];
+
+    // _.each(array, function (item) {
+    //   if (uniqueItem !== item) {
+    //     uniqueList.push(item);
+    //     uniqueItem = item;
+    //   }
+    // });
+
+    // return uniqueList;
+    // //use iteratee function
+    // var iterator = function(value) { return value === 1; };
+
+    // _.each(array, iterator(item));
+
+    var coll = {};
+    _.each(array, function (item, index, collection) {
+      if (!coll.hasOwnProperty(item)) {
+        coll[item] = 1;
+      }
+    });
+
+   var list = [];
+    _.each(coll, function (value, key) {
+      list.push(Number(key));
+    });
+
+    return list;
+
   };
 
 
