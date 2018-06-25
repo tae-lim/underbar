@@ -82,7 +82,7 @@
   _.filter = function(collection, test) {
     var passed = [];
     
-    _.each(collection, function(item) {
+    _.each(collection, function(item, index, collection) {
       if (test(item)) {
         passed.push(item);
       }
@@ -97,7 +97,7 @@
     // copying code in and modifying it
     var notPassed = [];
 
-    _.each(collection, function(item) {
+    _.each(collection, function(item, index, collection) {
       if (!test(item)) {
         notPassed.push(item);
       }
@@ -150,7 +150,7 @@
 
     var mapped = [];
 
-    _.each(collection, function(item) {
+    _.each(collection, function(item, index, collection) {
       mapped.push(iterator(item));
     });
 
